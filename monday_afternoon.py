@@ -1,4 +1,3 @@
-
 text = "192.168.1.1"
 
 parts = text.split(".")
@@ -17,6 +16,7 @@ for i in range(len(parts)):  # use range to cycle through the indexes
 
 print(parts)
 
+# PRINT BINARY THE LONG WAY
 count = 0
 for item in parts:
     b = bin(item)
@@ -27,3 +27,20 @@ for item in parts:
     else:
         print(padded, end=".")
     count += 1
+
+
+# PRINT BINARY THE SHORT WAY - ALL IN ONE LINE
+print(".".join(map(lambda x: bin(x)[2:].zfill(8), parts)))
+
+
+# COMPROMISE
+
+
+def bin_pad(x):
+    text = bin(x)
+    sliced = text[2:]
+    padded = sliced.zfill(8)
+    return padded
+
+
+print(".".join(map(bin_pad, parts)))
