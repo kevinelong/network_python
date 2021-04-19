@@ -9,7 +9,7 @@ print_them_all('Hello', 'Welcome', 'to', 'Intermediate Python')
 
 ###
 
-# unknown number of keyword argument
+# unknown number of keyword arguments
 def print_them_all(**kwargs):
     for key, value in kwargs.items():
         print("%s == %s" % (key, value))
