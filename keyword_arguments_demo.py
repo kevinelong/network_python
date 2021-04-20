@@ -1,5 +1,5 @@
 # unknown number of unnamed arguments
-def print_them_all(*argv):
+def print_them_all(*argv):  # argument values
     for arg in argv:
         print(arg)
 
@@ -9,7 +9,7 @@ print_them_all('Hello', 'Welcome', 'to', 'Intermediate Python')
 
 ###
 
-# unknown number of keyword argument
+# unknown number of keyword arguments
 def print_them_all(**kwargs):
     for key, value in kwargs.items():
         print("%s == %s" % (key, value))
