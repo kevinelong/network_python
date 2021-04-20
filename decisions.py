@@ -50,7 +50,7 @@ for item in data:
     mapping[item["type"]]("")
 print()
 
-# print("Final")
-# map(lambda item: {"switch": lambda x : print("Its a Switch!!!"),
-#            "router": lambda x : print("Its a router!!!"),
-#            "server": lambda x : print("Its a server!!!")}[item["type"]](), data)
+print("Final")
+map(lambda item: {"switch": lambda x : print("Its a Switch!!!"),
+           "router": lambda x : print("Its a router!!!"),
+           "server": lambda x : print("Its a server!!!")}[item["type"]](), data)
