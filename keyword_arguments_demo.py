@@ -1,5 +1,5 @@
 # unknown number of unnamed arguments
-def print_them_all(*argv):
+def print_them_all(*argv):  # argument values
     for arg in argv:
         print(arg)
 
