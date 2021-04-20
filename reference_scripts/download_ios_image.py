@@ -187,16 +187,17 @@ def sendCopy(packed):
 
     try:
 
+        #alternate
+        kwargs = creds.ESL_WAN1 if auth_method == 'ESL_WAN1' else creds.ESL_WAN
+        connection = netmiko.ConnectHandler(**kwargs, ip=router)
+        assert isinstance(connection, netmiko.cisco.CiscoIosSSH)
+
+        #original
         if auth_method == 'ESL_WAN1':
-
             connection = netmiko.ConnectHandler(**creds.ESL_WAN1, ip=router)
-
             assert isinstance(connection, netmiko.cisco.CiscoIosSSH)
-
         else:
-
             connection = netmiko.ConnectHandler(**creds.ESL_WAN, ip=router)
-
             assert isinstance(connection, netmiko.cisco.CiscoIosSSH)
 
     except netmiko.NetmikoAuthenticationException:
@@ -216,18 +217,18 @@ def sendCopy(packed):
         print('Connected to', router)
 
     show_ver = connection.send_command('show version', use_textfsm=True)
-"""
-[{'config_register': '0x2102',
-  'hardware': ['ASR1004'],
-  'hostname': 'LAS-ZZ-RT1-LASVEGAS-NV',
-  'mac': [],
-  'reload_reason': 'Reload Command',
-  'rommon': 'IOS-XE',
-  'running_image': 'asr1000rp1-adventerprisek9.03.16.08.S.155-3.S8-ext.bi',
-  'serial': ['FOX1530GPRP'],
-  'uptime': '2 weeks, 4 days, 18 hours, 22 minutes',
-  'version': '15.5(3)S8'}]
-"""
+    """
+    [{'config_register': '0x2102',
+      'hardware': ['ASR1004'],
+      'hostname': 'LAS-ZZ-RT1-LASVEGAS-NV',
+      'mac': [],
+      'reload_reason': 'Reload Command',
+      'rommon': 'IOS-XE',
+      'running_image': 'asr1000rp1-adventerprisek9.03.16.08.S.155-3.S8-ext.bi',
+      'serial': ['FOX1530GPRP'],
+      'uptime': '2 weeks, 4 days, 18 hours, 22 minutes',
+      'version': '15.5(3)S8'}]
+    """
     # pprint(show_ver)
 
     host_name = show_ver[0]['hostname']
