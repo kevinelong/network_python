@@ -13,7 +13,7 @@ VRF info: (vrf in name/id, vrf out name/id)
   4 79.0.0.9  4 msec *  1 msec
 '''
 
-with open('traceroute.template') as template:
+with open('traceroute.textfsm') as template:
     fsm = textfsm.TextFSM(template)  # use the file handle to create the fms object
     result = fsm.ParseText(traceroute)  # use the fsm's ParseText method
 
@@ -25,3 +25,5 @@ EXPECTED OUTPUT
 ['ID', 'Hop']
 [['1', '10.0.12.1'], ['2', '15.0.0.5'], ['3', '57.0.0.7'], ['4', '79.0.0.9']]
 """
+
+# NET_TEXTFSM env variable to path to alternate to appdata for readability
