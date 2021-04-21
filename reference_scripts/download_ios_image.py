@@ -325,7 +325,39 @@ def sendCopy(packed):
             isr4k = True
 
             show_rom = connection.send_command('show platform diag', use_textfsm=True)
-
+"""
+[{'chassis_type': 'ASR1004',
+  'firmware_version': '12.2(33r)XNC',
+  'hardware_signal': '',
+  'insert_time': '00:00:45 (2w5d ago)',
+  'internal_operational_state': 'ok',
+  'internal_state': 'online',
+  'module_sku': 'ASR1000-RP1',
+  'packet_signal': '',
+  'running_state': 'ok, active',
+  'slot_number': 'R0',
+  'state': '',
+  'uptime': '00:00:45 (2w5d ago)'},
+ {'chassis_type': 'ASR1004',
+  'firmware_version': '12.2(33r)XNC',
+  'hardware_signal': '00:00:46 (2w5d ago)',
+  'insert_time': '00:00:45 (2w5d ago)',
+  'internal_operational_state': 'ok',
+  'internal_state': 'online',
+  'module_sku': 'ASR1000-ESP10',
+  'packet_signal': '00:04:00 (2w5d ago)',
+  'running_state': 'ok, active',
+  'slot_number': 'F0',
+  'state': '',
+  'uptime': '00:03:15 (2w5d ago)'},
+ {'chassis_type': 'ASR1004',
+  'firmware_version': '',
+  'hardware_signal': '',
+  'insert_time': '00:03:08 (2w5d ago)',
+  'internal_operational_state': '',
+  'internal_state': '',
+  'module_sku': 'ASR1004-PWR
+"""
             pprint(show_rom)
 
             for rom_dict in show_rom:
