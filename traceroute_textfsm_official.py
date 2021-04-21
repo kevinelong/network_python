@@ -14,7 +14,7 @@ VRF info: (vrf in name/id, vrf out name/id)
   3 10.184.0.7 17 msec *  17 msec
 '''
 
-with open('traceroute.textfsm') as template:
+with open('traceroute_official.textfsm') as template:
     fsm = textfsm.TextFSM(template)  # use the file handle to create the fms object
     # result = fsm.ParseText(traceroute)  # use the fsm's ParseText method
     result = fsm.ParseTextToDicts(traceroute)  # use the fsm's ParseText method
