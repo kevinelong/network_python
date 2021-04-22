@@ -364,7 +364,14 @@ def QOSpushPMAPLAN(list, routerip):
 
 if __name__ == '__main__':
     username = getlogin()
-    select = input('What would you like to accomplish?:\n1: Verify WAN QoS Interfaces/Policy\n2: Update WAN QoS Service Policy\n3: Verify LAN QoS Interfaces/Policy\n4: Update LAN QoS Service Policy\n5: Get WAN PMAP counters\n')
+    select = input('''
+    What would you like to accomplish?:
+    1: Verify WAN QoS Interfaces/Policy
+    2: Update WAN QoS Service Policy
+    3: Verify LAN QoS Interfaces/Policy
+    4: Update LAN QoS Service Policy
+    5: Get WAN PMAP counters
+    ''')
     if int(select) == 1:
         filepath = input('Enter file path of device IPs\n')
         with open(filepath, 'r') as f:
