@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UserTaskRunner</title>
+</head>
+<body>
+<form action="/run" method="post">
+    <label>
+        Select Device List:<br><select id="lists" name="lists" size="3"></select>
+    </label>
+    <label>
+        Select Task:<br><select id="tasks" name="tasks" size="3"></select>
+    </label>
+    <label>
+            <input type="submit" value="Run Task on List">
+    </label>
+</form>
+</body>
+<script>
+    fetch('/data/')
+        .then(res => res.json())
+        .then((out) => {
+            let lists = document.getElementById("lists");
+            let tasks = document.getElementById("tasks");
+            for (let i = 0; i < out.lists.length; i++) {
+                let option = document.createElement("option");
+                option.innerHTML = out.lists[i];
+                option.value = i
+                lists.append(option);
+            }
+            for (let i = 0; i < out.tasks.length; i++) {
+                let option = document.createElement("option");
+                option.innerHTML = out.tasks[i];
+                option.value = i
+                tasks.append(option);
+            }
+        }).catch(err => console.error(err));
+</script>
+</html>
