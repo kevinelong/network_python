@@ -1,0 +1,9 @@
+body{
+    font-family: sans-serif;
+    vertical-align: top;
+}
+
+label{
+    display: inline-block;
+    vertical-align: top;
+}
