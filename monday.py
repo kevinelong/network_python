@@ -1,4 +1,3 @@
-# Have a case of the Mondays?
 
 
 text = "10.25"
