@@ -1,5 +1,6 @@
 from time import time
 from transformations import transform
+# import transformations
 
 data = [
     {
@@ -31,7 +32,7 @@ def find_item1(data, value):
         count += 1
         if item["id"] == value:
             print(f"Found: {item}, in {count} loops.")
-            return item
+    return item
 
 
 def find_item2(data, value):

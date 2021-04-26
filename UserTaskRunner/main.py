@@ -38,7 +38,8 @@ class Application:  # Model/Controller
         ]
         self.user_interface = None
 
-    def apply_task_to_list(self, task, device_list):
+    @staticmethod
+    def apply_task_to_list(task, device_list):
         # TODO create concurrent thread to send task command to all ips in the devicelist
         output = []
         for ip in device_list.device_list:
