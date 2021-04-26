@@ -1,11 +1,10 @@
-
 def transform(data, key="id"):
-    indexed = {}
+    output = {}
     for item in data:
         temp_id = item[key]
-        # del item[key]
-        indexed[temp_id] = item
-    return indexed
+        # del item[key]  # remove old key and value from inner dict
+        output[temp_id] = item
+    return output
 
 
 if __name__ == "__main__":
@@ -32,8 +31,6 @@ if __name__ == "__main__":
         },
     ]
 
-
     indexed = transform(data, "id")
     print(indexed)
     print(indexed[333])
-
