@@ -1,10 +1,10 @@
 # Python code to illustrate cube of a number
 # showing difference between def() and lambda().
-def cube(y):
+def cube(y): #named function
     return y * y * y
 
 
-lambda_cube = lambda y: y * y * y
+lambda_cube = lambda y: y * y * y #an anonymous function copied into an identifier/variable
 
 # using the normally
 # defined function
@@ -13,15 +13,56 @@ print(cube(5))
 # using the lambda function
 print(lambda_cube(5))
 
-print((lambda y: y * y * y)(5))
+print((lambda y: y * y * y)(5)) #define and call all at once.
+
+
+def do_it(f):
+    return f(5)
+
+
+print(do_it(lambda y: y * y * y))
+
 ###
 
 # Python code to illustrate
 # filter() with lambda()
 li = [5, 7, 22, 97, 54, 62, 77, 23, 73, 61]
 
+output = []
+for item in li:
+    if item % 2 != 0:
+        output.append(item)
+print(list(output))
+
 final_list = list(filter(lambda x: (x % 2 != 0), li))
 print(final_list)
+
+
+#EXPECTED [5, 7, 97, 77, 23, 73, 61]
+data = [
+    {
+        "id": 111,
+        "device": "a",
+        "description": "switch"
+    },
+    {
+        "id": 222,
+        "device": "bbb",
+        "description": "server"
+    },
+    {
+        "id": 333,
+        "device": "ccc",
+        "description": "server"
+    },
+    {
+        "id": 444,
+        "device": "ddd",
+        "description": "switch"
+    },
+]
+print(list(filter(lambda d:d["description"] == "switch", data)))
+#[{'id': 111, 'device': 'a', 'description': 'switch'}, {'id': 444, 'device': 'ddd', 'description': 'switch'}]
 
 ###
 
@@ -32,6 +73,8 @@ li = [5, 7, 22, 97, 54, 62, 77, 23, 73, 61]
 
 final_list = list(map(lambda x: x * 2, li))
 print(final_list)
+
+#[10, 14, 44, 194, 108, 124, 154, 46, 146, 122]
 
 ###
 
@@ -76,5 +119,5 @@ lis = [1, 3, 24, 12, 2, 6]
 print("The maximum element of the list is : ", end="")
 print(reduce(lambda a, b: a if a > b else b, lis))
 
-age = 53
+age = 11
 print("can" if age > 21 else "can't")
