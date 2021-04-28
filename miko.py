@@ -2,7 +2,7 @@ from netmiko import ConnectHandler
 import os
 os.environ["NET_TEXTFSM"] = "d:/python37/lib/site-packages/ntc_templates/templates"
 linux = {
-    'device_type': 'linux',
+    'device_type': 'linux', #cisco_ios
     'host': '3.81.60.164',
     'username': 'kevin',
     'password': 'S!mpl312',

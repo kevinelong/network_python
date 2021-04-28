@@ -1,3 +1,5 @@
+# pip install pyyaml
+
 import yaml
 
 data = """
