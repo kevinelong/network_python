@@ -43,14 +43,18 @@ print()
 
 # SAME FOR ACTIONS/FUNCTION
 
-mapping = {"switch": lambda x : print("Its a Switch!!!"),
-           "router": lambda x : print("Its a router!!!"),
-           "server": lambda x : print("Its a server!!!")}
+mapping = {"switch": lambda x: print("FIts a Switch!!!"),
+           "router": lambda x: print("FIts a router!!!"),
+           "server": lambda x: print("FIts a server!!!")}
 for item in data:
-    mapping[item["type"]]("")
+    value = item["type"] # pull out type to use as key to look up function
+    f = mapping[value] # pull function out of dict
+    f("")  # call the function and pass dummy parameter ""
+    # mapping[item["type"]]("")
 print()
 
 print("Final")
-map(lambda item: {"switch": lambda x : print("Its a Switch!!!"),
-           "router": lambda x : print("Its a router!!!"),
-           "server": lambda x : print("Its a server!!!")}[item["type"]](), data)
+# BUILD AND USE DICT INSIDE LAMDA
+map(lambda item: {"switch": lambda x: print("Its a Switch!!!"),
+                  "router": lambda x: print("Its a router!!!"),
+                  "server": lambda x: print("Its a server!!!")}[item["type"]](item), data)
