@@ -19,6 +19,9 @@ interface {{ interface }}
  description {{ description }}
  ip vrf {{ vrf }}
 """
+# create parser object and parse data using template:
+parser = ttp(data=data_to_parse, template=ttp_template1)
+parser.parse()
 
 # SUPPORT BOTH IP4 and IP6 with masks delimited by / or space using regex
 ttp_template2 = """
