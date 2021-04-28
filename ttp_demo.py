@@ -4,7 +4,7 @@ from ttp import ttp
 data_to_parse = """
 interface Loopback0
  description Router-id-loopback
- ip address 192.168.0.113/24
+ ip address 192.168.0.113 255.255.255.255
 !
 interface Vlan778
  description CPE_Acces_Vlan
@@ -13,20 +13,28 @@ interface Vlan778
 !
 """
 
-ttp_template = """
+ttp_template1 = """ #SIMPLE
 interface {{ interface }}
- ip address {{ ip }}/{{ mask }}
+ ip address {{ ip }} {{ mask}}
+ description {{ description }}
+ ip vrf {{ vrf }}
+"""
+
+# SUPPORT BOTH IP4 and IP6 with masks delimited by / or space using regex
+ttp_template2 = """
+interface {{ interface }}
+ ip address {{ ip }}{{separator | re("[ /]") }}{{ mask }}
  description {{ description }}
  ip vrf {{ vrf }}
 """
 
 # create parser object and parse data using template:
-parser = ttp(data=data_to_parse, template=ttp_template)
+parser = ttp(data=data_to_parse, template=ttp_template2)
 parser.parse()
 
 # print result in JSON format
-results = parser.result(format='json')[0]
-print(results)
+for item in parser.result(format='json'):
+    print(item)
 # [
 #     [
 #         {
@@ -80,6 +88,6 @@ boot_raw = ttp(data=show_boot, template=ttp_template_boot_system)
 
 boot_raw.parse()
 
-output = boot_raw.result(format='raw')
+output = boot_raw.result(format='raw')[0]
 
 print(output)
