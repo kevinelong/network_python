@@ -2,8 +2,6 @@ from multiprocessing.pool import Pool
 
 
 # Run many tasks against many devices
-
-
 def run_many(device_list, task_list, pool_size=20):
     output = []
     with Pool(pool_size) as p:
