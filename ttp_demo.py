@@ -15,7 +15,7 @@ interface Vlan778
 
 ttp_template1 = """ #SIMPLE
 interface {{ interface }}
- ip address {{ ip }} {{ mask}}
+ ip address {{ ip }} {{ mask }}
  description {{ description }}
  ip vrf {{ vrf }}
 """
