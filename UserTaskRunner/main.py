@@ -18,6 +18,27 @@ ADJECTIVE:
     IP Address
     AccessMode (Limited, Restricted)
     DeviceList
+
+USER STORIES:
+# STORY - NARATIVE
+# USE CASE
+
+# Create catalog item
+# As a:       store manager
+# I want to:  add catalog items
+# So as to:   make them available for sale.
+
+# Add item to inventory
+# As a:       As a warehouse manage
+# I want to:  Take an item into inventory
+# So as to:   Track increasing inventory levels.
+
+# Add item to cart.
+# As a:       As a store customer
+# I want to:  create a set of items
+# So as to:   so i can pay once for many things to save time.
+
+
 """
 from UserInterface import UserInterface
 from WebInterface import WebInterface
