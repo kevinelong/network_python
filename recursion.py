@@ -1,4 +1,7 @@
-# RECURSION IS YET ANOTHER KIND OF LOOP - BUT CRAZIER
+# RECURSION IS LIKE YET ANOTHER KIND OF LOOP - BUT CRAZIER
+
+# OROBOROS
+# GNU - BACKRONYMS
 
 def call_me(number):
     print(number)
@@ -106,6 +109,6 @@ def traverse4(node, depth=0, path=[], output=[], search_type="type", search_valu
     return output
 
 
-output = traverse4(tree_data)
+output = traverse4(tree_data, search_type="type", search_value="file")
 print(len(output))
 print(output)

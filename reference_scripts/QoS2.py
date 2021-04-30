@@ -361,7 +361,15 @@ def QOSpushPMAPLAN(list, routerip):
             connection.send_config_set(addconfig)
             i += 1
 
+"""
+Interact with the user to select (one or more tasks). Display results (also progress?).
+Apply a Task to a list of device IPs and log the result-details for each device the task is run on.
 
+NOUNS (people places things) - Classes/Modules
+VERBS (Action Words) - Functions/Methods on the classes
+ADJECTIVES (Describe) - Attributes/Properties
+
+"""
 if __name__ == '__main__':
     username = getlogin()
     select = input('''
@@ -378,7 +386,7 @@ if __name__ == '__main__':
             routers = []
             input_file = f.read()
         input_file = input_file.split("\n")
-        routers = [i for i in input_file if i != '']
+        routers = [i for i in input_file if i != ''] #remove blank lines
         list_of_routers = [(target) for target in routers]
 #        username = getlogin()
         with Pool(20) as p:

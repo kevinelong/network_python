@@ -13,7 +13,7 @@ for item in data:
     print(line, item)
     line += 1
 
-# SMART WAYS
+# SMART WAYS - ENUMERATE
 data = ["eat", "sleep", "repeat"]
 for index, item in enumerate(data):
     print(index, item)
@@ -35,6 +35,27 @@ for fruit_key in data:
     fruit = data[fruit_key]
     print(fruit_key, fruit)
 
-# SMART WAY
+# SMART WAY - .ITEMS()
 for fruit_key, fruit in data.items():
     print(fruit_key, fruit)
+#
+# forge = {
+#     [1, 1, 1]: {"wood": 3}
+# }
+# wanos = {
+#     "key0": {
+#         "os": "",
+#         "disk": "",
+#         "hash": ""
+#     },
+#     "key1": {
+#         "os": "",
+#         "disk": "",
+#         "hash": ""
+#     }
+# }
+# filename = wanos.wanos.get(key)
+#
+# disk = wanos.wandisk.get(key)
+#
+# hash_value = wanos.md5_hash.get(key)

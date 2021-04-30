@@ -1,6 +1,5 @@
 import re
 
-
 # 1) String contains only a certain set of characters (in this case a-z, A-Z and 0-9).
 def is_allowed_specific_char(string):
     charRe = re.compile(r'[^a-zA-Z0-9.]')
@@ -24,6 +23,7 @@ def text_match(text):
 print(text_match("ac"))
 print(text_match("abc"))
 print(text_match("abbc"))
+print(text_match("abbx"))
 
 
 # 3) Write a Python program that matches a string that has an a followed by one or more b's
@@ -304,13 +304,15 @@ print("New date in DD-MM-YYYY Format: ", change_date_format(dt1))
 
 
 # 26) Write a Python program to match if two words from a list of words starting with letter 'P'.
-def change_date_format(dt):
-    return re.sub(r'(\d{4})-(\d{1,2})-(\d{1,2})', '\\3-\\2-\\1', dt)
 
+# Sample strings.
+words = ["Python PHP", "Java JavaScript", "c c++"]
 
-dt1 = "2026-01-02"
-print("Original date in YYY-MM-DD Format: ", dt1)
-print("New date in DD-MM-YYYY Format: ", change_date_format(dt1))
+for w in words:
+    m = re.match("(P\w+)\W(P\w+)", w)
+    # Check for success
+    if m:
+        print(m.groups())
 
 # 27) Write a Python program to separate and print the numbers of a given string.
 
@@ -339,3 +341,8 @@ for m in re.finditer("\d+", text):
 # 30) Write a Python program to abbreviate 'Road' as 'Rd.' in a given string.
 street = '21 Ramkrishna Road'
 print(re.sub('Road$', 'Rd.', street))
+
+# Learn regex incrementally here:
+# https://regexone.com/
+# visual feedback on practice here:
+# https://regexr.com/

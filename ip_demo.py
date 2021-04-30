@@ -6,6 +6,7 @@ import ipaddress
 # Creating an object of IPv4Address class and
 # initializing it with an IPv4 address.
 ip = ipaddress.IPv4Address('112.79.234.30')
+ip2 = ipaddress.IPv6Address('112.79.234.30')
 
 # Print total number of bits in the ip.
 print("Total no of bits in the ip:", ip.max_prefixlen)

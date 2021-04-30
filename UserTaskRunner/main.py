@@ -18,32 +18,81 @@ ADJECTIVE:
     IP Address
     AccessMode (Limited, Restricted)
     DeviceList
+
+USER STORIES:
+# STORY - NARATIVE
+# USE CASE
+
+# Create catalog item
+# As a:       store manager
+# I want to:  add catalog items
+# So as to:   make them available for sale.
+
+# Add item to inventory
+# As a:       As a warehouse manage
+# I want to:  Take an item into inventory
+# So as to:   Track increasing inventory levels.
+
+# Add item to cart.
+# As a:       As a store customer
+# I want to:  create a set of items
+# So as to:   so i can pay once for many things to save time.
+
+
 """
 from UserInterface import UserInterface
-from WebInterface import WebInterface
-from TaskRunner import Task, Device, DeviceList, ResultSet, TaskResult
+from UserTaskRunner.Library.TaskRunner import Task, Device, DeviceList, ResultSet, TaskResult
 import json
-from flask import Flask, redirect, request, session, make_response
+from flask import Flask, request, make_response
+from netmiko import ConnectHandler
+import os
+
+os.environ["NET_TEXTFSM"] = "d:/python37/lib/site-packages/ntc_templates/templates"
+linux = {
+    'device_type': 'linux',  # cisco_ios
+    'host': '3.81.60.164',
+    'username': 'kevin',
+    'password': 'S!mpl312',
+}
+
+
+class MyTask(Task):
+    def __init__(self):
+        super(MyTask, self).__init__("MY TASK", "echo hello", None)
+
+    def run(self, device):
+        # TODO NET MIKO OR WHATEVER
+        linux["host"] = device.ip
+        c = ConnectHandler(**linux)  # use of kwargs optional, could just use regular parameters
+        raw = c.send_command("arp -a")
+        return TaskResult(self, device, message=raw)
 
 
 class Application:  # Model/Controller
     def __init__(self):
         self.device_lists = [
             DeviceList("Demo", [
-                Device("demo", "127.0.0.1")
+                Device("3.81.60.164", "demo")
             ])
         ]
         self.user_tasks = [
-            Task("ARP", "arp -a")
+            Task("ARP", "arp -a"),
+            MyTask()
         ]
         self.user_interface = None
 
-    def apply_task_to_list(self, task, device_list):
+    @staticmethod
+    def apply_task_to_list(task, device_list):
         # TODO create concurrent thread to send task command to all ips in the devicelist
+        task_list = [task]
+        if len(task.subtasks) > 0:
+            for t in task.subtasks:
+                task_list.append(t)
         output = []
-        for ip in device_list.device_list:
-            print("running" + task.name)
-            output.append(task.run(ip))
+        for device in device_list.device_list:
+            output.append(task.run(device))
+        # output = run_many(device_list.device_list, task_list)
+
         return ResultSet(device_list, output)
 
     def import_list(self, file_path):
