@@ -29,7 +29,8 @@ class Task:
 
     def run(self, device):
         # TODO run and also run subprocess tasks
-        return TaskResult( self, device)
+        message = "Ran generic task."
+        return TaskResult(self, device, message)
 
     def __str__(self):
         return self.name
@@ -47,7 +48,7 @@ class TaskResult:
 
 class ResultSet:
     def __init__(self, device_list, result_list):
-        self.device_list=device_list
+        self.device_list = device_list
         self.result_list = result_list
 
     def __str__(self):
@@ -56,5 +57,5 @@ class ResultSet:
         remaining = MAX - len(title)
         padding = remaining // 2
         header = (padding * "=") + title + (padding * "=")
-        lines = [str(item.device) + " " +  item.message for item in self.result_list]
+        lines = [str(item.device) + " " + item.message for item in self.result_list]
         return header + "\n" + "\n".join(lines)
