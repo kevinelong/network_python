@@ -80,3 +80,43 @@ c = PaymentCalculator(
 )
 
 print(c.text_report())
+
+
+# WITHOUT OOP
+def get_percent_for_flatmate(flatmate, flatmate_list):
+    return flatmate.days / get_total_days_for_all(flatmate_list)
+
+
+def get_amounts_per_bill_for_flatmate(flatmate, bill_list, flatmate_list):
+    output = {}
+    for b in bill_list:
+        output[b.name] = get_percent_for_flatmate(flatmate, flatmate_list) * b.amount
+    return output
+
+
+def get_total_days_for_all(flatmate_list):
+    total = 0
+    for f in flatmate_list:
+        total += f.days
+    return total
+
+
+def report(flatmate_list, bill_list):
+    text = "REPORT\n"
+    for f in flatmate_list:
+        bills_dict = get_amounts_per_bill_for_flatmate(f, bill_list, flatmate_list)
+        text += f"\t{f.name}\n"
+        for name in bills_dict:
+            amount = bills_dict[name]
+            text += f"\t\t{name}: {amount}\n"
+    print(text)
+
+
+report([
+    FlatMate("Bob", 30),
+    FlatMate("Carol", 10),
+], [
+    Bill("Power", 100),
+    Bill("Water", 100),
+    Bill("Cable", 100)
+])
